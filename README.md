@@ -7,17 +7,9 @@
 [travis]: https://travis-ci.org/TrySound/postcss-inline-svg
 
 ```css
-@svg-load nav url(img/nav.svg) {
-    fill: #cfc;
-    path:nth-child(2) {
-        fill: #ff0;
-    }
-}
-.nav {
-    background: svg-inline(nav);
-}
+
 .up {
-    background: svg-load('img/arrow-up.svg', fill=#000, stroke=#fff);
+    background: svg-load('img/arrow-up.svg', 'path{fill=#000, stroke=#fff}');
 }
 ```
 
