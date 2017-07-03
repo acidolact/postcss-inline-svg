@@ -1,6 +1,6 @@
-# postcss-inline-svg [![Build Status][travis-img]][travis]
+# postcss-inline-svg-simplified
 
-[PostCSS] plugin to reference an SVG file and control its attributes with CSS syntax.
+[PostCSS] plugin to reference an SVG file and control its attributes with CSS syntax. #simplified fork of postcss-inline-svg
 
 [PostCSS]: https://github.com/postcss/postcss
 
