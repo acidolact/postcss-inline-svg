@@ -1,7 +1,7 @@
 {
-  "name": "postcss-inline-svg-simplified",
-  "version": "0.1.0",
-  "description": "PostCSS plugin to reference an SVG file and control its attributes with CSS syntax. Simplified version of postcss-inline-svg",
+  "name": "o3inline-svg",
+  "version": "0.1.1",
+  "description": "PostCSS plugin to reference an SVG file and control its attributes with CSS syntax. Customized version of postcss-inline-svg",
   "keywords": [],
   "main": "dist/postcss-inline-svg-simplified.js",
   "files": [
@@ -40,22 +40,22 @@
       ]
     }
   },
-  "author": "Konstantin Baryshev <kbaryshev@ozon.ru>",
-  "originalAuthor": "Bogdan Chadkin <trysound@yandex.ru>",
+  "author": "<kbaryshev@ozon.ru>",
+
   "license": "MIT",
   "dependencies": {
-    "css-select": "^1.2.0",
-    "dom-serializer": "^0.1.0",
-    "htmlparser2": "^3.9.0",
-    "postcss": "^6.0.1",
-    "postcss-value-parser": "^3.2.3"
+    "css-select": "1.2.0",
+    "dom-serializer": "0.1.0",
+    "htmlparser2": "3.9.0",
+    "postcss": "6.0.1",
+    "postcss-value-parser": "3.2.3"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.4.0",
-    "eslint": "^3.4.0",
-    "eslint-config-postcss": "^2.0.0",
-    "jest": "^20.0.1",
-    "rollup": "^0.34.10",
-    "rollup-plugin-babel": "^2.7.1"
+    "babel-preset-env": "1.4.0",
+    "eslint": "3.4.0",
+    "eslint-config-postcss": "2.0.0",
+    "jest": "20.0.1",
+    "rollup": "0.34.10",
+    "rollup-plugin-babel": "2.7.1"
   }
 }
