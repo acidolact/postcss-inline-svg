@@ -7,14 +7,13 @@ export function encode(code) {
         .replace(/#/g, '%23');
 }
 
-function normalize(code) {
-    return code
+export function transform(code) {
+    code = code
         .replace(/'/g, '%22')
         .replace(/"/g, '\'')
         .replace(/\s+/g, ' ')
+        .replace(/:/, '%3A')
         .trim();
+    return `"data:image/svg+xml;charset=utf-8,${code}"`;
 }
 
-export function transform(code) {
-    return `"data:image/svg+xml;charset=utf-8,${normalize(code)}"`;
-}
