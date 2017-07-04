@@ -1,9 +1,9 @@
 {
   "name": "o3inline-svg",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "PostCSS plugin to reference an SVG file and control its attributes with CSS syntax. Customized version of postcss-inline-svg",
   "keywords": [],
-  "main": "dist/postcss-inline-svg-simplified.js",
+  "main": "dist/o3inline-svg.js",
   "files": [
     "dist"
   ],
