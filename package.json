@@ -2,14 +2,8 @@
   "name": "postcss-inline-svg-simplified",
   "version": "0.1.0",
   "description": "PostCSS plugin to reference an SVG file and control its attributes with CSS syntax. Simplified version of postcss-inline-svg",
-  "keywords": [
-    "postcss",
-    "css",
-    "postcss-plugin",
-    "svg",
-    "inline"
-  ],
-  "main": "dist/postcss-inline-svg.js",
+  "keywords": [],
+  "main": "dist/postcss-inline-svg-simplified.js",
   "files": [
     "dist"
   ],
