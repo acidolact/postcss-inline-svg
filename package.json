@@ -1,7 +1,7 @@
 {
-  "name": "postcss-inline-svg",
-  "version": "3.0.0",
-  "description": "PostCSS plugin to reference an SVG file and control its attributes with CSS syntax",
+  "name": "postcss-inline-svg-simplified",
+  "version": "0.1.0",
+  "description": "PostCSS plugin to reference an SVG file and control its attributes with CSS syntax. Simplified version of postcss-inline-svg",
   "keywords": [
     "postcss",
     "css",
@@ -46,13 +46,9 @@
       ]
     }
   },
-  "author": "Bogdan Chadkin <trysound@yandex.ru>",
+  "author": "Konstantin Baryshev <kbaryshev@ozon.ru>",
+  "originalAuthor": "Bogdan Chadkin <trysound@yandex.ru>",
   "license": "MIT",
-  "repository": "TrySound/postcss-inline-svg",
-  "bugs": {
-    "url": "https://github.com/TrySound/postcss-inline-svg/issues"
-  },
-  "homepage": "https://github.com/TrySound/postcss-inline-svg",
   "dependencies": {
     "css-select": "^1.2.0",
     "dom-serializer": "^0.1.0",

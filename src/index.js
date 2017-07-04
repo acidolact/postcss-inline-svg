@@ -52,18 +52,17 @@ export default postcss.plugin('postcss-inline-svg', (opts = {}) => (css, result)
                 }
             }
         } else if (node.type === 'decl') {
-            if (node.value.indexOf('svg-load(') !== -1 ||
-                node.value.indexOf('svg-inline(') !== -1
-            ) {
+            let val = node.value;
+            if (Math.max( val.indexOf('svg-load('), val.indexOf('svg-inline('), val.indexOf('svg-inline-with-styles(') ) >= 0 ) {
                 try {
                     const file = node.source && node.source.input && node.source.input.file;
                     const statements = parseDeclValue(node.value);
-                    statements.loaders.forEach(({ url, params, valueNode, parsedValue }) => {
+                    statements.loaders.forEach(({ url, params, valueNode, parsedValue, selectors }) => {
                         const loader = {
                             id: resolveId(file, url, opts),
                             parent: file,
                             params,
-                            selectors: {},
+                            selectors: selectors || {},
                             node
                         };
                         loaders.push(loader);

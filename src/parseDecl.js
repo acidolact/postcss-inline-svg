@@ -113,6 +113,54 @@ function getInliner(parsedValue, valueNode) {
     };
 }
 
+function parseCSSText(cssText) {
+    let res = {};
+
+    cssText.split('}').forEach(item => {
+        if (item === '') return;
+
+        item += '}';
+
+        let value = item.match(/\{(.*)\}/)[1],
+            key = item.slice(0, item.indexOf('{'));
+
+        res[key] = {};
+
+        value = value.split(':');
+        value.forEach((decl, counter) => {
+            if ((counter + 1) % 2 === 0) {
+                res[key][value[counter - 1]] = value[counter].trim();
+            }
+        });
+    });
+
+    return res;
+}
+
+export function getLoaderWithStyles(parsedValue, valueNode) {
+    // parse url
+
+    let _getUrl = getUrl(valueNode.nodes),
+        url = _getUrl.url,
+        urlEnd = _getUrl.urlEnd;
+
+    // parse params
+
+
+    let paramsNode = valueNode.nodes[2];
+    let selectors = paramsNode && paramsNode.type === 'string'  && parseCSSText(paramsNode.value);
+
+    return {
+        url,
+        params: {},
+        valueNode,
+        parsedValue,
+        selectors
+    };
+
+}
+
+
 export function parseDeclValue(value) {
     const loaders = [];
     const inliners = [];
@@ -124,6 +172,8 @@ export function parseDeclValue(value) {
                 loaders.push(getLoader(parsedValue, valueNode));
             } else if (valueNode.value === 'svg-inline') {
                 inliners.push(getInliner(parsedValue, valueNode));
+            } else {
+                loaders.push(getLoaderWithStyles(parsedValue, valueNode));
             }
         }
     });
@@ -133,3 +183,4 @@ export function parseDeclValue(value) {
         inliners
     };
 }
+
