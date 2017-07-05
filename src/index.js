@@ -43,7 +43,8 @@ export default postcss.plugin('postcss-inline-svg', (opts = {}) => (css, result)
                         parent: file,
                         params,
                         selectors,
-                        node
+                        node,
+                        styleString
                     };
                     loaders.push(loader);
                     loadersMap[name] = loader;
@@ -57,13 +58,14 @@ export default postcss.plugin('postcss-inline-svg', (opts = {}) => (css, result)
                 try {
                     const file = node.source && node.source.input && node.source.input.file;
                     const statements = parseDeclValue(node.value);
-                    statements.loaders.forEach(({ url, params, valueNode, parsedValue, selectors }) => {
+                    statements.loaders.forEach(({ url, params, valueNode, parsedValue, selectors, styleString }) => {
                         const loader = {
                             id: resolveId(file, url, opts),
                             parent: file,
                             params,
                             selectors: selectors || {},
-                            node
+                            node,
+                            styleString
                         };
                         loaders.push(loader);
                         inliners.push({
