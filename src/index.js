@@ -94,7 +94,7 @@ export default postcss.plugin('postcss-inline-svg', (opts = {}) => (css, result)
     });
 
     const promises = loaders.map(loader => {
-        return load(loader.id, loader.params, loader.selectors, opts).then(code => {
+        return load(loader.id, loader.params, loader.selectors, opts, loader.styleString).then(code => {
             loader.svg = code;
             result.messages.push({
                 type: 'dependency',

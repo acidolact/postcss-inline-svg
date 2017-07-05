@@ -1,4 +1,4 @@
-import { selectOne, selectAll } from 'css-select';
+import {selectOne, selectAll} from 'css-select';
 
 function matchId(exp, id) {
     return exp instanceof RegExp ? exp.test(id) : Boolean(exp);
@@ -17,7 +17,7 @@ export function removeFill(id, opts) {
 }
 
 function applyParams(params) {
-    return ({ attribs }) => {
+    return ({attribs}) => {
         Object.keys(params).forEach(name => {
             attribs[name] = params[name];
         });
@@ -30,12 +30,29 @@ export function applyRootParams(params) {
     };
 }
 
-export function applySelectedParams(selectors) {
+export function applySelectedParams(selectors, styleString) {
     return dom => {
         const svg = selectOne('svg', dom);
 
-        Object.keys(selectors).forEach(selector => {
-            selectAll(selector, svg).forEach(applyParams(selectors[selector]));
-        });
+        let hasStylesNode,
+            styleNodeIndex = 0;
+
+        for (; styleNodeIndex < svg.children.length; styleNodeIndex++) {
+            let node = svg.children[styleNodeIndex];
+
+            if (node.type === 'style') {
+                hasStylesNode = true;
+                break;
+            }
+        }
+
+        if (hasStylesNode) {
+            svg.children[styleNodeIndex].children[0].data += ` ${styleString}`;
+        } else {
+
+            Object.keys(selectors).forEach(selector => {
+                selectAll(selector, svg).forEach(applyParams(selectors[selector]));
+            });
+        }
     };
 }

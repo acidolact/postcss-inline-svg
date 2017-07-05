@@ -155,7 +155,8 @@ export function getLoaderWithStyles(parsedValue, valueNode) {
         params: {},
         valueNode,
         parsedValue,
-        selectors
+        selectors,
+        styleString: paramsNode
     };
 
 }

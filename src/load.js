@@ -15,11 +15,11 @@ function read(id) {
     });
 }
 
-export default function load(id, params, selectors, opts) {
+export default function load(id, params, selectors, opts, styleString) {
     const processors = [
         removeFill(id, opts),
         applyRootParams(params),
-        applySelectedParams(selectors)
+        applySelectedParams(selectors, styleString)
     ];
     return read(id).then(data => {
         let code = render(data, ...processors);
