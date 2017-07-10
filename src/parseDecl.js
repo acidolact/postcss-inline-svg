@@ -113,7 +113,7 @@ function getInliner(parsedValue, valueNode) {
     };
 }
 
-function parseCSSText(cssText) {
+function cssTextToObject(cssText) {
     let res = {};
 
     cssText.split('}').forEach(item => {
@@ -144,11 +144,8 @@ export function getLoaderWithStyles(parsedValue, valueNode) {
         url = _getUrl.url,
         urlEnd = _getUrl.urlEnd;
 
-    // parse params
-
-
     let paramsNode = valueNode.nodes[2];
-    let selectors = paramsNode && paramsNode.type === 'string'  && parseCSSText(paramsNode.value);
+    let selectors = paramsNode && paramsNode.type === 'string'  && cssTextToObject(paramsNode.value);
 
     return {
         url,
